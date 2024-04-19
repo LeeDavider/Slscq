@@ -87,15 +87,24 @@ class Slscq:
         result = self.gen(them,essay_num)
         return f"{result['title']}\n    {result['begin']}\n    {result['body']}\n    {result['end']}"
 
+
+
 if __name__ == '__main__':
     paser = argparse.ArgumentParser(
         prog='slscq.py',
         description='auto generate a shit article'
     )
-    paser.add_argument('them',help='article topic',type=str)
-    paser.add_argument('-n','--essay_num',help='least character of article',type=int,default=500,metavar='num')
-    paser.add_argument('-d','--data_source',help='json file of data source',type=str,default='../data.json',metavar='json file')
-    params = paser.parse_args()
-    arc_gen = Slscq(params.data_source)
-    arc_text = arc_gen.gen_text(params.them,params.essay_num)
+    # paser.add_argument('them',help='article topic',type=str)
+    # paser.add_argument('-n','--essay_num',help='least character of article',type=int,default=500,metavar='num')
+    # paser.add_argument('-d','--data_source',help='json file of data source',type=str,default='../data.json',metavar='json file')
+    # params = paser.parse_args()
+    topic = '年轻人买房'
+    essay_num = 500
+    data_source = '../data.json'
+    #arc_gen = Slscq(params.data_source)
+    #arc_text = arc_gen.gen_text(params.them,params.essay_num)
+    
+    arc_gen = Slscq(data_source)
+    arc_text = arc_gen.gen_text(topic,essay_num)
+    
     print(arc_text)
